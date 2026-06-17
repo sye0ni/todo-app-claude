@@ -1,7 +1,6 @@
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
 let todos = [];
 let draggedId = null;
+let currentUserId = null;
 
 const priorityMap = { high: '높음', medium: '중간', low: '낮음' };
 
@@ -151,7 +150,7 @@ async function addTodo() {
 
   const { data, error } = await db
     .from('todos')
-    .insert({ text, priority, position, completed: false })
+    .insert({ text, priority, position, completed: false, user_id: currentUserId })
     .select()
     .single();
 
@@ -214,7 +213,14 @@ async function sortByPriority() {
   await updatePositions();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const session = await requireAuth();
+  if (!session) return;
+
+  currentUserId = session.user.id;
+  document.getElementById('user-email').textContent = session.user.email;
+  document.getElementById('logout-btn').addEventListener('click', signOut);
+
   loadTodos();
 
   document.getElementById('add-btn').addEventListener('click', addTodo);
