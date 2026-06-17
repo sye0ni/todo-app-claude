@@ -1,0 +1,2 @@
+const SUPABASE_URL = 'https://abcnmwykyjpommqezung.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY25td3lreWpwb21tcWV6dW5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2Njg1NzYsImV4cCI6MjA5NzI0NDU3Nn0.GLFQWsf_zlTUtICB0TPfbfXRdoCSLxkWb094oqLXryY';

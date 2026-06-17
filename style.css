@@ -1,0 +1,480 @@
+:root {
+  --md-primary: #6200EE;
+  --md-primary-dark: #3700B3;
+  --md-secondary: #03DAC6;
+  --md-background: #F5F5F5;
+  --md-surface: #FFFFFF;
+  --md-error: #B00020;
+  --md-on-primary: #FFFFFF;
+  --md-on-surface: rgba(0, 0, 0, 0.87);
+  --md-on-surface-60: rgba(0, 0, 0, 0.6);
+  --md-on-surface-38: rgba(0, 0, 0, 0.38);
+
+  --md-elev-1: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  --md-elev-2: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  --md-elev-4: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+  --md-elev-8: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f64f59, #f093fb, #4facfe, #43e97b);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  color: var(--md-on-surface);
+  min-height: 100vh;
+}
+
+/* ── App Bar ── */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  box-shadow: var(--md-elev-4);
+  z-index: 100;
+}
+
+.app-bar-icon {
+  font-size: 24px;
+  opacity: 0.9;
+}
+
+.app-bar-title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+}
+
+/* ── Main Content ── */
+.main-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 72px 16px 32px;
+}
+
+/* ── Levi Banner ── */
+.levi-banner {
+  width: 100%;
+  height: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: var(--md-elev-2);
+}
+
+.levi-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Card ── */
+.md-card {
+  background: var(--md-surface);
+  border-radius: 8px;
+  box-shadow: var(--md-elev-2);
+}
+
+.input-card {
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+/* ── Input Row ── */
+.input-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+#todo-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0 16px;
+  height: 40px;
+  border: 1px solid var(--md-on-surface-38);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: var(--md-on-surface);
+  outline: none;
+  transition: border 0.2s;
+  background: transparent;
+}
+
+#todo-input:focus {
+  border: 2px solid var(--md-primary);
+}
+
+#todo-input::placeholder {
+  color: var(--md-on-surface-38);
+}
+
+#priority-select {
+  height: 40px;
+  padding: 0 8px;
+  border: 1px solid var(--md-on-surface-38);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: var(--md-on-surface);
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+#priority-select:focus {
+  border: 2px solid var(--md-primary);
+}
+
+#add-btn {
+  height: 40px;
+  padding: 0 16px;
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--md-elev-2);
+  transition: box-shadow 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+#add-btn:hover {
+  background: #7722FF;
+  box-shadow: var(--md-elev-4);
+}
+
+/* ── List Toolbar ── */
+.list-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+#sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 36px;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--md-primary);
+  border: 1px solid var(--md-primary);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#sort-btn .material-icons {
+  font-size: 18px;
+}
+
+#sort-btn:hover {
+  background: rgba(98, 0, 238, 0.08);
+}
+
+/* ── Todo List ── */
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Todo Item ── */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px 8px 8px;
+  background: var(--md-surface);
+  border-radius: 4px;
+  box-shadow: var(--md-elev-1);
+  transition: box-shadow 0.2s, opacity 0.2s;
+  cursor: default;
+  min-height: 56px;
+}
+
+.todo-item:hover {
+  box-shadow: var(--md-elev-2);
+}
+
+.todo-item.dragging {
+  opacity: 0.45;
+  box-shadow: var(--md-elev-8);
+}
+
+.todo-item.drag-over {
+  border-top: 2px solid var(--md-primary);
+}
+
+/* ── Drag Handle ── */
+.drag-handle {
+  font-size: 20px;
+  color: var(--md-on-surface-38);
+  cursor: grab;
+  flex-shrink: 0;
+  user-select: none;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+/* ── Checkbox ── */
+.todo-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--md-primary);
+  flex-shrink: 0;
+}
+
+/* ── Priority Chip ── */
+.priority-badge {
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.priority-high {
+  background: #FFCDD2;
+  color: #C62828;
+}
+
+.priority-medium {
+  background: #FFF9C4;
+  color: #E65100;
+}
+
+.priority-low {
+  background: #C8E6C9;
+  color: #2E7D32;
+}
+
+/* ── Todo Text ── */
+.todo-text {
+  flex: 1;
+  font-size: 16px;
+  color: var(--md-on-surface);
+  word-break: break-all;
+  letter-spacing: 0.15px;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--md-on-surface-38);
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+}
+
+/* ── Icon Buttons ── */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.icon-btn .material-icons {
+  font-size: 20px;
+  color: var(--md-on-surface-38);
+  transition: color 0.2s;
+}
+
+.edit-btn:hover {
+  background: rgba(98, 0, 238, 0.08);
+}
+
+.edit-btn:hover .material-icons {
+  color: var(--md-primary);
+}
+
+.delete-btn:hover {
+  background: rgba(176, 0, 32, 0.08);
+}
+
+.delete-btn:hover .material-icons {
+  color: var(--md-error);
+}
+
+/* ── Edit Mode ── */
+.todo-item.editing {
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(98, 0, 238, 0.04);
+  box-shadow: none;
+  border: 1px solid var(--md-primary);
+}
+
+.edit-text-input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--md-on-surface-38);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.edit-text-input:focus {
+  border: 2px solid var(--md-primary);
+}
+
+.edit-priority-select {
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--md-on-surface-38);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  background: var(--md-surface);
+  outline: none;
+  cursor: pointer;
+}
+
+.save-btn {
+  height: 36px;
+  padding: 0 16px;
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.save-btn:hover {
+  background: #7722FF;
+}
+
+.cancel-btn {
+  height: 36px;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--md-on-surface-60);
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ── Empty Message ── */
+#empty-msg {
+  text-align: center;
+  color: var(--md-on-surface-38);
+  font-size: 14px;
+  margin-top: 40px;
+  display: none;
+  letter-spacing: 0.25px;
+}
+
+#empty-msg.visible {
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 64px 8px 24px;
+  }
+
+  .levi-banner {
+    height: 200px;
+  }
+
+  .input-row {
+    flex-wrap: wrap;
+  }
+
+  #todo-input {
+    flex: 1 1 100%;
+  }
+
+  #priority-select {
+    flex: 1;
+  }
+
+  #add-btn {
+    flex: 1;
+  }
+
+  .todo-item {
+    gap: 6px;
+    padding: 6px 2px 6px 6px;
+  }
+
+  .priority-badge {
+    display: none;
+  }
+}

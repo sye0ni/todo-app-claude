@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘 할 일</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-bar">
+    <span class="material-icons app-bar-icon">check_circle</span>
+    <span class="app-bar-title">오늘 할 일</span>
+  </header>
+
+  <main class="main-content">
+    <div class="levi-banner">
+      <img src="https://i.namu.wiki/i/LY3BRX1cA0x2boXWZjYsPVBO2V5NqX5g1ONg5oNFs4hFVSqvCm7PPBEvMsYDc_abnKgI8CIClVJwGQRwhZHtL1RJgxHVbFTw85iF6pvj69Q9rf0Jq0eFhh945jh-hN1rhCjBZHmqOxtTqtd7j1mXtg.webp" alt="리바이 병장">
+    </div>
+
+    <div class="md-card input-card">
+      <div class="input-row">
+        <input type="text" id="todo-input" placeholder="할 일을 입력하세요" autocomplete="off">
+        <select id="priority-select">
+          <option value="high">높음</option>
+          <option value="medium" selected>중간</option>
+          <option value="low">낮음</option>
+        </select>
+        <button id="add-btn">추가</button>
+      </div>
+    </div>
+
+    <div class="list-toolbar">
+      <button id="sort-btn">
+        <span class="material-icons">sort</span>
+        우선순위 정렬
+      </button>
+    </div>
+
+    <ul id="todo-list"></ul>
+    <p id="empty-msg">할 일이 없습니다 🎉</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
