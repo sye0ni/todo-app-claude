@@ -8,6 +8,7 @@ async function loadTodos() {
   const { data, error } = await db
     .from('todos')
     .select('*')
+    .eq('user_id', currentUserId)
     .order('position');
   if (error) { console.error(error); return; }
   todos = data ?? [];

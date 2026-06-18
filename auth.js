@@ -15,7 +15,7 @@ async function signOut() {
 async function signInWithOAuth(provider) {
   const { error } = await db.auth.signInWithOAuth({
     provider,
-    options: { redirectTo: new URL('index.html', location.href).href },
+    options: { redirectTo: `${location.origin}/index.html` },
   });
   if (error) console.error(error);
 }
